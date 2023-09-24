@@ -1,0 +1,27 @@
+public static ArrayList pegaBanco()
+{
+ try
+ {
+     Lista.clear();//limpa tudo
+    pstmt = con.prepareStatement("select * from tabrodas");
+    rs = pstmt.executeQuery();
+   
+    while (rs.next())
+    { // criando o objeto
+      Lista.add(rs.getLong("id_roda"));
+      Lista.add(rs.getString("modelo"));
+      Lista.add(rs.getString("marca"));
+      Lista.add(rs.getDouble("preco"));
+      Lista.add(rs.getInt("raio"));
+      Lista.add(rs.getBytes("foto"));
+      System.out.println("adicionado=");
+    }//while
+   rs.close();
+   pstmt.close();
+       System.out.println("Feita leittura Banco");
+      return Lista;
+  } catch (Exception el) {
+      JOptionPane.showMessageDialog(null,"Erro Arraylist"+el);
+         return null;
+   }
+}//////////////////////////////////////////
